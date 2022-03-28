@@ -28,7 +28,7 @@ Subject: Application for {position} at {company}
             https://github.com/thomps9012
 """            
 
-from_address="thomps9012@gmail.com"
+from_address="thompsonsamuel097@gmail.com"
 password = input("Type your password and press enter: ")
 
 context = ssl.create_default_context()
