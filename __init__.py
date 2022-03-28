@@ -1,14 +1,14 @@
-import smtplib, ssl, csv
-
+import yagmail
+import pandas as pd
+from googleapiclient.errors import HttpError
 
 message = """
-Subject: Application for {position} at {company}
-
-
             Dear {first_name} {last_name},
+                
                 I am submitting my application for consideration regarding the {position} position with you at {company}.
 
             The relevant skills I have related to this position are:
+
                 - {skill1}
                 - {skill2}
                 - {skill3}
@@ -23,23 +23,29 @@ Subject: Application for {position} at {company}
 
             Samuel Thompson
             
-            https://www.sjtportfolio.herokuapp.com
-            https://www.linkedin.com/in/samuel-joseph-thompson/
-            https://github.com/thomps9012
+            <a target="_blank" href="https://www.sjtportfolio.herokuapp.com"><p>Online Portfolio</p></a>
+            <a target="_blank" href="https://www.linkedin.com/in/samuel-joseph-thompson/"><p>LinkedIn Profile</p></a>
+            <a target="_blank" href="https://github.com/thomps9012"><p>GitHub Profile</p></a>
 """            
 
 from_address="thompsonsamuel097@gmail.com"
-password = input("Type your password and press enter: ")
+filename = 'SamuelThompsonCV.pdf'
 
-context = ssl.create_default_context()
-with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-    server.login(from_address, password)
-    with open("job_search.csv") as file:
-        reader = csv.reader(file)
-        next(reader)
-        for company, position, first_name, last_name, email, skill1, skill2, skill3, skill4, skill5 in reader:
-            server.sendmail(
-                from_address,
-                email,
-                message.format(company=company,position=position,first_name=first_name, last_name=last_name, skill1=skill1, skill2=skill2, skill3=skill3, skill4=skill4, skill5=skill5),
-            )
+yag = yagmail.SMTP('thompsonsamuel097@gmail.com', oauth2_file='~/oauth2_creds.json' )
+
+
+data = pd.read_csv('job_search.csv')
+
+for d in data.values:
+    # for row in reader:
+    body = message.format(company=d[0], first_name=d[1], last_name=d[2], email=d[3], position=d[4], skill1=d[5], skill2=d[6], skill3=d[7], skill4=d[8], skill5=d[9])
+    contact = d[3]
+    try:
+        yag.send(to=contact,
+        contents = body,
+        subject=f"Application for {d[4]} at {d[0]}",
+        attachments = filename
+        )
+        print('success')
+    except HttpError as error:
+            print(f'An error occurred: {error}')
