@@ -9,27 +9,19 @@ from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-import google.auth
+import google_auth_oauthlib
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-SCOPES = ['https://www.googleapis.com/auth/gmail.send']
+SCOPES = ['https://mail.google.com/']
 
 def gmail_send_message_with_attachment():
-    """Create and send an email message with attachment
-        Print the returned  message id
-        Returns: Message object, including message id
-        Load pre-authorized user credentials from the environment.
-        TODO(developer) - See https://developers.google.com/identity
-        for guides on implementing OAuth2 for the application.
-    """
-    creds, _ = google.auth.default()
-
+    flow = google_auth_oauthlib.flow.Flow.from_client_secrets_file('credentials.json', SCOPES)
     try:
-        service = build('gmail', 'v1', credentials=creds)
+        service = build('gmail', 'v1', credentials=flow)
         mime_message = MIMEMultipart()
-        mime_message['to'] = 'thomps9012@gmail.com'
         mime_message['from'] = 'thompsonsamuel097@gmail.com'
+        mime_message['to'] = 'thomps9012@gmail.com'
         mime_message['subject'] = 'sample with attachment'
         text_part = MIMEText('Hi, this is automated mail with attachment.'
                              'Please do not reply.')
