@@ -19,7 +19,7 @@ body = """<strong>Dear {first_name} {last_name},</strong>
                 <li>{skill4}</li>
                 <li>{skill5}</li>
                 </ol>
-            Attached is my resume with relevant work experience/projects, and below are links to my <strong>online portfolio/blog</strong>, <strong>GitHub</strong>, and <strong>LinkedIn profiles</strong>.
+            Attached is my resume with relevant work experience/projects, and below are links to my <strong>Portfolio/Blog</strong>, <strong>GitHub</strong>, and <strong>LinkedIn profiles</strong>.
             <br />
             <br />
             Thank you for your consideration to join your team at {company},
