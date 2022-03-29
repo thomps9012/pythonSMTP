@@ -5,13 +5,13 @@ import pandas as pd
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import (Mail, Attachment, FileContent, FileName, FileType, Disposition)
 
-body = """Dear {first_name} {last_name},
+body = """<strong>Dear {first_name} {last_name},</strong>
             <br />
             <br />
             I recently saw that {company} was looking for a {position}. As a burgeoning web developer who has created several full stack web applications, I believe I would be a great fit for this posting.
             <br/>
             <br/>
-            Some relevant skills I have related to this posting are:
+            Some relevant skills I have related to this position are:
                 <ol>
                 <li>{skill1}</li>
                 <li>{skill2}</li>
@@ -19,16 +19,16 @@ body = """Dear {first_name} {last_name},
                 <li>{skill4}</li>
                 <li>{skill5}</li>
                 </ol>
-            Attached is my resume with relevant work experience/projects, and below are links to my online portfolio/blog, GitHub, and LinkedIn profiles.
+            Attached is my resume with relevant work experience/projects, and below are links to my <strong>online portfolio/blog</strong>, <strong>GitHub</strong>, and <strong>LinkedIn profiles</strong>.
             <br />
             <br />
             Thank you for your consideration to join your team at {company},
             <br />
             <br />
             <hr />
-            <a target="_blank" href="https://sjtportfolio.herokuapp.com/"><p>Online Portfolio</p></a>
-            <a target="_blank" href="https://www.linkedin.com/in/samuel-joseph-thompson/"><p>LinkedIn Profile</p></a>
+            <a target="_blank" href="https://sjtportfolio.herokuapp.com/"><p>Online Portfolio / Blog</p></a>
             <a target="_blank" href="https://github.com/thomps9012"><p>GitHub Profile</p></a>
+            <a target="_blank" href="https://www.linkedin.com/in/samuel-joseph-thompson/"><p>LinkedIn Profile</p></a>
             <hr />
             Samuel Thompson
             <br />
