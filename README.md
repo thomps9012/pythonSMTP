@@ -17,16 +17,16 @@ pip install sendgrid
 pip install pandas
 ```
 3. Create a Comma Seperated Value (CSV) file with the following information:
-    1. Company (company)
-    2. First Name of Contact (first_name)
-    3. Last Name of Contact (last_name)
-    4. Email (email)
-    5. Position Applying for (position)
-    6. Relevant Skill 1 (skill1) 
-    7. Relevant Skill 2 (skill2) 
-    8. Relevant Skill 3 (skill3) 
-    9. Relevant Skill 4 (skill4) 
-    10. Relevant Skill 5 (skill5)
+    - Company (company)
+    - First Name of Contact (first_name)
+    - Last Name of Contact (last_name)
+    - Email (email)
+    - Position Applying for (position)
+    - Relevant Skill 1 (skill1) 
+    - Relevant Skill 2 (skill2) 
+    - Relevant Skill 3 (skill3) 
+    - Relevant Skill 4 (skill4) 
+    - Relevant Skill 5 (skill5)
 4. Upload your Resume in your preferred format
 5. Create an environment variable on your local machine labelled SENDGRID_API_KEY
     - Prerequisites
