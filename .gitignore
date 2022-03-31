@@ -2,3 +2,8 @@
 credentials.json
 token.json
 serviceAccount.json
+smtp.py
+test.py
+/src
+/__pycache__
+SamuelThompsonCV.pdf
